@@ -23,6 +23,7 @@ export default function App() {
         'とくぼう',
         'すばやさ'
     ];
+
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Radar Chart</Text>
@@ -34,7 +35,11 @@ export default function App() {
                             style={styles.inputArea}
                             onChangeText={(value) => {
                                 const newInputData = inputData.slice();
-                                newInputData[i] = Number(value);
+                                if (!!value) {
+                                    newInputData[i] = Number(value);
+                                } else {
+                                    newInputData[i] = null;
+                                }
                                 setInputData(newInputData);
                             }}
                             value={inputData[i]?.toString()}
